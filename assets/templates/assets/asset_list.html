@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            margin: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .asset-name {
+            font-weight: bold;
+        }
+        .asset-description {
+            color: #555;
+        }
+        .asset-quantity {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Assets List</h1>
+    
+    <ul>
+        {% for asset in assets %}
+            <li>
+                <span class="asset-name">{{ asset.name }}</span> - 
+                <span class="asset-description">{{ asset.description }}</span> - 
+                Quantity: <span class="asset-quantity">{{ asset.quantity }}</span> - 
+                Price: <span class="asset-price">{{ asset.price }}</span> - 
+                Date: <span class="asset-date">{{ asset.purchased_date }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Total Price by Date</h2>
+    <ul>
+        {% for date, total in totals_by_date.items %}
+            <li>
+                Date: {{ date }} - Total Price: {{ total|floatformat:2 }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
